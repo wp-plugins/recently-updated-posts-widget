@@ -3,7 +3,7 @@ Contributors: luciole135
 Tags: widget, post, page, custom post type, update, updated, modified, 
 Requires at least: 2.8
 Tested up to: 4.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Donate link: additifstabac@free.fr
 License: GPLv2
 
@@ -15,10 +15,12 @@ A WordPress widget that displays the last updated posts and pages
 * Il affiche uniquement les « n » derniers articles et pages récemment mis à jour qui ne sont pas les « n » derniers écrits.
 * Il est ainsi un complément au widget « Articles récents » puisqu’il n’affiche pas les mêmes articles (et pages) que ce dernier.
 * Il met en cache les articles et pages récemment mis à jour dans un transient qui est automatiquement actualisé à chaque édition d’un article (ou d'une page).
-* Au survol de la souris, il affiche dans une infobulle la date et l’heure de la dernière mise à jour de l’article.
+* Au survol de la souris, il affiche dans une infobulle la date et l’heure de la dernière mise à jour de l’article (ou de la page).
 * Le style du widget peut être customisé via le fichier style.css
-* A la désinstallation via le tableau de bord, la base de données est nettoyée et optimisée des options et transient. Les fichiers sont supprimé du dossier /wp-content/plugins à la demande.
+* A la désinstallation via le tableau de bord, la base de données est nettoyée et optimisée des options et transient. Les fichiers sont supprimés du dossier /wp-content/plugins à la demande.
 * Il est compatible avec WordPress multisite.
+* Il est écrit en anglais, et traduit en français.
+* Il est prêt à être traduit dans d’autres langues (translation ready).
 
 = English =
 * This widget comes in the form of a plugin that displays the widget 'Recently updated posts' in the page Appearance->Widgets when activated.
@@ -29,6 +31,8 @@ A WordPress widget that displays the last updated posts and pages
 * The widget style can be customized via the style.css file
 * Uninstalling via dashboard, the database is cleaned and optimized of options and transient. The files are deleted from the folder/wp-content/plugins on demand.
 * It is compatible with WordPress multisite.
+* It is written in english and translated into french.
+* It is ready to be translated into other languages (translation ready).
 
 == Installation ==
 
@@ -39,14 +43,9 @@ A WordPress widget that displays the last updated posts and pages
 
 = 1.0.1 =
 * correction of errors in English translation (Thanks to fge, moderator of the french WordPress support forum)
-* better mysql request
+* faster mysql request
 
-== Traduction ==
+= 1.0.2 =
+* New tooltip which work on all local install of WordPress
 
-= French =
-* Il est écrit en anglais, et traduit en français par moi-même.
-* Il est prêt à être traduit dans d’autres langues (translation ready).
 
-= English =
-* It is written in english and translated into french by myself.
-* It is ready to be translated into other languages (translation ready).

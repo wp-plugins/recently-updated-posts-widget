@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: last-updated-posts-widget\n"
-"POT-Creation-Date: 2014-11-15 12:44+0100\n"
-"PO-Revision-Date: 2014-11-15 13:15+0100\n"
+"POT-Creation-Date: 2014-11-15 23:46+0100\n"
+"PO-Revision-Date: 2014-11-15 23:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: luciole135 <luciole135@free.fr>\n"
 "Language: french\n"
@@ -17,27 +17,29 @@ msgstr ""
 "X-Poedit-SearchPath-0: C:\\xampp\\htdocs\\wordpress\\wp-content\\plugins"
 "\\recently-updated-posts-widget\n"
 
-#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:49
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:50
 msgid "The latests posts and pages updated (which are not the most recent)."
 msgstr ""
 "Les derniers articles et pages mis à jour (qui ne sont pas les plus récents)."
 
-#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:52
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:53
 msgid "Recently updated posts"
 msgstr "Articles récemment mis à jour"
 
-#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:98
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:99
 msgid "Title:"
 msgstr "Titre :"
 
-#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:105
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:106
 msgid "Number:"
 msgstr "Nombre :"
 
-#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:150
-#, php-format
-msgid "Last updated on %1$s at %2$s"
-msgstr "Mis à jour le %1$s à %2$s"
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:149
+msgid " at&nbsp;"
+msgstr " à&nbsp;"
 
-#~ msgid "Last updated posts"
-#~ msgstr "Derniers articles mis à jour"
+#~ msgid "Last updated on&nbsp;"
+#~ msgstr "Mis à jour le&nbsp;"
+
+#~ msgid "Last updated on %1$s at %2$s"
+#~ msgstr "Mis à jour le %1$s à %2$s"

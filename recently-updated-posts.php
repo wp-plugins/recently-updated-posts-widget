@@ -3,13 +3,14 @@
 * Plugin Name: Recently updated posts widget
 * Description: The latests posts and pages updated (which are not the most recent).
 * Author: Luciole135
-* Version: 1.0.1
+* Version: 1.0.2
 * Author URI: http://additifstabac.free.fr/
 * Plugin URI: http://additifstabac.free.fr/index.php/recently-updated-posts-widget/
 * Text Domain: recently-updated-posts-domain 
 * Domain Path: /languages
 * License: GPL2
 */
+
 // don't load directly
 if (!function_exists('is_admin')) {
     header('Status: 403 Forbidden');
@@ -142,14 +143,10 @@ function requete_dernier_article($nb_display) {
 														AS temp)
 										ORDER BY post_modified DESC
 										LIMIT $nb_display");	
-										
-		// Décommenter la ligne suivante pour afficher les infobulles en français sur un site local sous windows
-		//if (stripos(PHP_OS,"win") !== false) setlocale (LC_TIME, 'french');
 		
 		$display= '<ul>';								
 		foreach ($last_update as $post)
-            { $format_OS=(stripos(PHP_OS,"win") !== false ? "%A %#d %B %Y" : "%A %e %B %Y");
-			$title = sprintf(__('Last updated on %1$s at %2$s','recently-updated-posts-domain'),strftime($format_OS, strtotime($post->post_modified)),strftime("%H:%M", strtotime($post->post_modified)));
+            { $title= date_i18n( get_option( 'date_format' ), strtotime($post->post_modified) ).__(' at&nbsp;','recently-updated-posts-domain').date_i18n( get_option( 'time_format' ), strtotime($post->post_modified) );
 			$display.= "<li><a href=".get_permalink($post->id)." title='$title' >".$post->post_title."</a></li>";
 			}
 		$display.= '</ul>';

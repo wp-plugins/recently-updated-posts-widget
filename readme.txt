@@ -2,8 +2,8 @@
 Contributors: luciole135
 Tags: widget, post, page, custom post type, update, updated, modified, 
 Requires at least: 2.8
-Tested up to: 4.0
-Stable tag: 1.0.2
+Tested up to: 4.1
+Stable tag: 1.0.3
 Donate link: additifstabac@free.fr
 License: GPLv2
 
@@ -16,7 +16,6 @@ A WordPress widget that displays the last updated posts and pages
 * Il est ainsi un complément au widget « Articles récents » puisqu’il n’affiche pas les mêmes articles (et pages) que ce dernier.
 * Il met en cache les articles et pages récemment mis à jour dans un transient qui est automatiquement actualisé à chaque édition d’un article (ou d'une page).
 * Au survol de la souris, il affiche dans une infobulle la date et l’heure de la dernière mise à jour de l’article (ou de la page).
-* Le style du widget peut être customisé via le fichier style.css
 * A la désinstallation via le tableau de bord, la base de données est nettoyée et optimisée des options et transient. Les fichiers sont supprimés du dossier /wp-content/plugins à la demande.
 * Il est compatible avec WordPress multisite.
 * Il est écrit en anglais, et traduit en français.
@@ -28,7 +27,6 @@ A WordPress widget that displays the last updated posts and pages
 * It is thus a complement to the "Recent posts" widget since it does not display the same items as the latter.
 * It caches posts and pages recently updated in a transient that is automatically updated with each edition of a post (or of a page).
 * On mouse-hover, it displays in a ToolTip the date and time of the last update of the posts (or of the page).
-* The widget style can be customized via the style.css file
 * Uninstalling via dashboard, the database is cleaned and optimized of options and transient. The files are deleted from the folder/wp-content/plugins on demand.
 * It is compatible with WordPress multisite.
 * It is written in english and translated into french.
@@ -46,6 +44,17 @@ A WordPress widget that displays the last updated posts and pages
 * faster mysql request
 
 = 1.0.2 =
-* New tooltip which work on all local install of WordPress
+* New ToolTip that works on all local servers
 
+= 1.0.3 =
+* input data validation
+* Performance improvement by not loading the file style.css
 
+== Frequently Asked Questions ==
+= French : Comment styliser le widget ? =
+* Il est préférable de styliser le plugin via le fichier style.css de votre thème enfant en ajoutant une class CSS : par exemple .recently_updated_posts {text-align: left;}
+* Sinon, le style du widget peut être customisé via le fichier style.css du plugin. Dans ce cas, il est nécessaire de décommenter les lignes 161 à 168 du fichier recently-updated-posts.php afin de charger le style personalisé. cette deuxième méthode est moins performante.
+
+= English: How styling the widget? =
+* It is better to stylize the plugin via the style.css file of your child theme by adding a class CSS: e.g .recently_updated_posts {text-align: left;}
+* Otherwise, the style of the widget can be customized via the style.css of the plugin file. In this case, it is necessary to uncomment lines 161 to 168 of file recently-updated - posts .php in order to load the personalized style. This second method is less efficient.

@@ -30,7 +30,9 @@ else
     {
         switch_to_blog( $blog_id );
         delete_option( 'widget_recently_updated_posts' );
-		delete_transient('widget_recently_updated_posts');   
+		delete_transient('widget_recently_updated_posts'); 
+		// On optimise la base de données après les suppressions
+		$wpdb->query('OPTIMIZE TABLE ' . $wpdb->options);
     }
     switch_to_blog( $original_blog_id );
 }

@@ -3,7 +3,7 @@
 * Plugin Name: Recently updated posts widget
 * Description: The latests posts and pages updated (which are not the most recent).
 * Author: Luciole135
-* Version: 1.0.2
+* Version: 1.0.3
 * Author URI: http://additifstabac.free.fr/
 * Plugin URI: http://additifstabac.free.fr/index.php/recently-updated-posts-widget/
 * Text Domain: recently-updated-posts-domain 
@@ -47,7 +47,8 @@ if (is_admin()) {
 class recently_updated_posts_Widget extends WP_Widget {
 	function recently_updated_posts_Widget() {
 		/* Widget settings. */
-		$widget_ops = array("classname" => 'recently_updated_posts',"description" => __('The latests posts and pages updated (which are not the most recent).','recently-updated-posts-domain'),);
+		$widget_ops = array("classname" => 'recently_updated_posts',
+							"description" => __('The latests posts and pages updated (which are not the most recent).','recently-updated-posts-domain'),);
 		
 		/* Create the widget. */
 		$this->WP_Widget('recently_updated_posts', __('Recently updated posts','recently-updated-posts-domain'), $widget_ops);
@@ -58,7 +59,7 @@ class recently_updated_posts_Widget extends WP_Widget {
 		extract( $args );
 
 		/* User-selected settings. */
-		$title = apply_filters('widget_title', $instance['title'] );
+		$title = apply_filters('widget_title',$instance['title'] );
 		$nb_display = $instance['nb_display'];
 
 		/* Before widget (defined by themes). */
@@ -82,8 +83,8 @@ class recently_updated_posts_Widget extends WP_Widget {
 	if (isset($new_instance)) delete_transient('widget_recently_updated_posts');
     
 	/* Récupération des paramètres envoyés */
-    $instance['title'] = strip_tags($new_instance['title']);
-    $instance['nb_display'] = $new_instance['nb_display'];
+    $instance['title'] = sanitize_text_field($new_instance['title']);
+    $instance['nb_display'] =(isset($new_instance['nb_display'])? absint($new_instance['nb_display']): 5) ;
  
     return $instance;
     }
@@ -112,17 +113,17 @@ class recently_updated_posts_Widget extends WP_Widget {
 }
 
 function recently_updated_posts_transient($nb_display){   
-    // Le transient est-il inexistant ou expiré ?
+    // Le transient est-il inexistant ?
     if (false === ($transient=get_transient('widget_recently_updated_posts'))) {
 
-        // Si oui, je donne une valeur au futur transient.
+        // Si oui, nous donnons une valeur au futur transient.
         $value = requete_dernier_article($nb_display);
 
-        // Je met à jour la valeur du transient avec $value, sans délai d'expiration
-        set_transient('widget_recently_updated_posts', $value);
+        // Nous mettons à jour la valeur du transient avec $value, sans délai d'expiration
+        set_transient('widget_recently_updated_posts',$value);
 
-        // Je met à jour la valeur de ma variable $transient
-        $transient = get_transient( 'widget_recently_updated_posts' );
+        // Nous mettons à jour la valeur du $transient
+        $transient = get_transient('widget_recently_updated_posts');
     }
     //Nous renvoyons la valeur du transient mis à jour
     return $transient; 
@@ -131,7 +132,6 @@ function recently_updated_posts_transient($nb_display){
 function requete_dernier_article($nb_display) {
 		global $wpdb;
 		/* Nous allons ici récupérer les dernière articles mis à jour qui ne sont pas les derniers écrits */
-		$today  = current_time('mysql', 1);
         $last_update = $wpdb->get_results("SELECT post_modified, post_title, id
 										FROM $wpdb->posts
 										WHERE post_type <> 'revision' AND post_type <> 'attachment' AND post_type <> 'nav_menu_item' AND post_status = 'publish' 
@@ -146,7 +146,7 @@ function requete_dernier_article($nb_display) {
 		
 		$display= '<ul>';								
 		foreach ($last_update as $post)
-            { $title= date_i18n( get_option( 'date_format' ), strtotime($post->post_modified) ).__(' at&nbsp;','recently-updated-posts-domain').date_i18n( get_option( 'time_format' ), strtotime($post->post_modified) );
+            { $title = date_i18n(get_option('date_format'),strtotime($post->post_modified)).__(' at&nbsp;','recently-updated-posts-domain').date_i18n(get_option('time_format'),strtotime($post->post_modified));
 			$display.= "<li><a href=".get_permalink($post->id)." title='$title' >".$post->post_title."</a></li>";
 			}
 		$display.= '</ul>';
@@ -155,11 +155,14 @@ function requete_dernier_article($nb_display) {
 		}
 
 /**
- * Register style sheet.
- */
-add_action('wp_enqueue_scripts', 'recently_updated_posts_styles' );
+* Register style sheet.
+* décommenter les lignes 161 à 168 pour utiliser le style.css personnalisé inclus dans ce plugin, sinon ajouter une classe CSS dans votre thème enfant appelée .recently_updated_posts{ }
+*/
+/*
+add_action('wp_enqueue_scripts','recently_updated_posts_styles' );
 
 function recently_updated_posts_styles() {
 	wp_register_style('recently_updated_posts', plugins_url('recently-updated-posts-widget/style.css'));
 	wp_enqueue_style('recently_updated_posts');
 }
+*/

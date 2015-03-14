@@ -3,7 +3,7 @@
 * Plugin Name: Recently updated posts widget
 * Description: The latests posts and pages updated (which are not the most recent).
 * Author: Luciole135
-* Version: 1.0.3
+* Version: 1.1
 * Author URI: http://additifstabac.free.fr/
 * Plugin URI: http://additifstabac.free.fr/index.php/recently-updated-posts-widget/
 * Text Domain: recently-updated-posts-domain 
@@ -69,7 +69,7 @@ class recently_updated_posts_Widget extends WP_Widget {
 		if($title)
 			echo $before_title . $title . $after_title;
 			
-		echo recently_updated_posts_transient($nb_display);
+		echo recently_updated_posts_transient($nb_display,$instance);
 		/* After widget (defined by themes). */
 		?><div class="clear"></div><?php 
 		echo $after_widget;
@@ -85,6 +85,7 @@ class recently_updated_posts_Widget extends WP_Widget {
 	/* Récupération des paramètres envoyés */
     $instance['title'] = sanitize_text_field($new_instance['title']);
     $instance['nb_display'] =(isset($new_instance['nb_display'])? absint($new_instance['nb_display']): 5) ;
+	$instance['show_date'] = $new_instance['show_date'];
  
     return $instance;
     }
@@ -94,6 +95,7 @@ class recently_updated_posts_Widget extends WP_Widget {
 	// Affichage des paramètres du widget dans l'admin
     $title = esc_attr($instance['title']);
     $nb_display = esc_attr($instance['nb_display']);
+	$show_date = $instance['show_date'];
 	 ?>
         <p>
             <label for="<?php echo $this->get_field_id('title'); ?>">
@@ -108,16 +110,41 @@ class recently_updated_posts_Widget extends WP_Widget {
                 <input class="widefat" id="<?php echo $this->get_field_id('nb_display'); ?>" name="<?php echo $this->get_field_name('nb_display'); ?>" type="text" value="<?php echo $nb_display; ?>" />
             </label>
         </p>
+		<p>
+            <?php _e('Display post date: ','recently-updated-posts-domain'); ?>
+				<br/><input type='radio' 
+						id="<?php echo $this->get_field_id('show_date'); ?>_1"
+						name="<?php echo $this->get_field_name('show_date'); ?>" 
+						value='tooltip' 
+						checked='checked'
+						<?php checked( $show_date == 'tooltip', true) ?> />
+				<label for="<?php echo $this->get_field_id('show_date'); ?>_1"><?php _e('On the ToolTip','recently-updated-posts-domain'); ?> 
+				</label> 
+				<br/><input 	type='radio'
+						id="<?php echo $this->get_field_id('show_date'); ?>_2"
+						name="<?php echo $this->get_field_name('show_date'); ?>" 
+						value='title' 
+						<?php checked( $show_date == 'title', true) ?>/>
+				<label for="<?php echo $this->get_field_id('show_date'); ?>_2"><?php _e('Below the title','recently-updated-posts-domain'); ?>
+				</label>
+				<br/><input 	type='radio'
+						id="<?php echo $this->get_field_id('show_date'); ?>_3"
+						name="<?php echo $this->get_field_name('show_date'); ?>" 
+						value='none' 
+						<?php checked( $show_date == 'none', true) ?>/>
+				<label for="<?php echo $this->get_field_id('show_date'); ?>_3"><?php _e('Do not display','recently-updated-posts-domain'); ?>
+				</label>
+        </p>
     <?php
     }	
 }
 
-function recently_updated_posts_transient($nb_display){   
+function recently_updated_posts_transient($nb_display,$instance){   
     // Le transient est-il inexistant ?
     if (false === ($transient=get_transient('widget_recently_updated_posts'))) {
 
         // Si oui, nous donnons une valeur au futur transient.
-        $value = requete_dernier_article($nb_display);
+        $value = requete_dernier_article($nb_display,$instance);
 
         // Nous mettons à jour la valeur du transient avec $value, sans délai d'expiration
         set_transient('widget_recently_updated_posts',$value);
@@ -129,7 +156,7 @@ function recently_updated_posts_transient($nb_display){
     return $transient; 
 }
 
-function requete_dernier_article($nb_display) {
+function requete_dernier_article($nb_display,$instance) {
 		global $wpdb;
 		/* Nous allons ici récupérer les dernière articles mis à jour qui ne sont pas les derniers écrits */
         $last_update = $wpdb->get_results("SELECT post_modified, post_title, id
@@ -146,8 +173,14 @@ function requete_dernier_article($nb_display) {
 		
 		$display= '<ul>';								
 		foreach ($last_update as $post)
-            { $title = date_i18n(get_option('date_format'),strtotime($post->post_modified)).__(' at&nbsp;','recently-updated-posts-domain').date_i18n(get_option('time_format'),strtotime($post->post_modified));
-			$display.= "<li><a href=".get_permalink($post->id)." title='$title' >".$post->post_title."</a></li>";
+            { 
+			$tooltip='';
+			$date ='';
+			if ($instance['show_date'] == 'title')			
+				$date = date_i18n(get_option('date_format'),strtotime($post->post_modified));
+			elseif ($instance['show_date'] == 'tooltip')
+				$tooltip =date_i18n(get_option('date_format'),strtotime($post->post_modified)).__(' at&nbsp;','recently-updated-posts-domain').date_i18n(get_option('time_format'),strtotime($post->post_modified));
+			$display.= "<li><a href=".get_permalink($post->id)." title='$tooltip' >".$post->post_title."</a><br />$date</li>";
 			}
 		$display.= '</ul>';
 

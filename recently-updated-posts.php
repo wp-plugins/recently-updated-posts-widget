@@ -3,7 +3,7 @@
 * Plugin Name: Recently updated posts widget
 * Description: The latests posts and pages updated (which are not the most recent).
 * Author: Luciole135
-* Version: 1.1
+* Version: 1.2
 * Author URI: http://additifstabac.free.fr/
 * Plugin URI: http://additifstabac.free.fr/index.php/recently-updated-posts-widget/
 * Text Domain: recently-updated-posts-domain 
@@ -118,21 +118,29 @@ class recently_updated_posts_Widget extends WP_Widget {
 						value='tooltip' 
 						checked='checked'
 						<?php checked( $show_date == 'tooltip', true) ?> />
-				<label for="<?php echo $this->get_field_id('show_date'); ?>_1"><?php _e('On the ToolTip','recently-updated-posts-domain'); ?> 
+				<label for="<?php echo $this->get_field_id('show_date'); ?>_1"><?php _e('on the ToolTip','recently-updated-posts-domain'); ?> 
 				</label> 
-				<br/><input 	type='radio'
-						id="<?php echo $this->get_field_id('show_date'); ?>_2"
-						name="<?php echo $this->get_field_name('show_date'); ?>" 
-						value='title' 
-						<?php checked( $show_date == 'title', true) ?>/>
-				<label for="<?php echo $this->get_field_id('show_date'); ?>_2"><?php _e('Below the title','recently-updated-posts-domain'); ?>
-				</label>
 				<br/><input 	type='radio'
 						id="<?php echo $this->get_field_id('show_date'); ?>_3"
 						name="<?php echo $this->get_field_name('show_date'); ?>" 
+						value='after' 
+						<?php checked( $show_date == 'after', true) ?>/>
+				<label for="<?php echo $this->get_field_id('show_date'); ?>_3"><?php _e('after the title','recently-updated-posts-domain'); ?>
+				</label>
+				<br/><input 	type='radio'
+						id="<?php echo $this->get_field_id('show_date'); ?>_2"
+						name="<?php echo $this->get_field_name('show_date'); ?>" 
+						value='below' 
+						<?php checked( $show_date == 'below', true) ?>/>
+				<label for="<?php echo $this->get_field_id('show_date'); ?>_2"><?php _e('below the title','recently-updated-posts-domain'); ?>
+				</label>
+				
+				<br/><input 	type='radio'
+						id="<?php echo $this->get_field_id('show_date'); ?>_4"
+						name="<?php echo $this->get_field_name('show_date'); ?>" 
 						value='none' 
 						<?php checked( $show_date == 'none', true) ?>/>
-				<label for="<?php echo $this->get_field_id('show_date'); ?>_3"><?php _e('Do not display','recently-updated-posts-domain'); ?>
+				<label for="<?php echo $this->get_field_id('show_date'); ?>_4"><?php _e('do not display','recently-updated-posts-domain'); ?>
 				</label>
         </p>
     <?php
@@ -174,13 +182,13 @@ function requete_dernier_article($nb_display,$instance) {
 		$display= '<ul>';								
 		foreach ($last_update as $post)
             { 
-			$tooltip='';
-			$date ='';
-			if ($instance['show_date'] == 'title')			
+			$tooltip = $date = $below='';
+			if ($instance['show_date']=='below') $below='<br/>';
+			if (($instance['show_date'] == 'below')	or 	($instance['show_date'] == 'after'))		
 				$date = date_i18n(get_option('date_format'),strtotime($post->post_modified));
 			elseif ($instance['show_date'] == 'tooltip')
 				$tooltip =date_i18n(get_option('date_format'),strtotime($post->post_modified)).__(' at&nbsp;','recently-updated-posts-domain').date_i18n(get_option('time_format'),strtotime($post->post_modified));
-			$display.= "<li><a href=".get_permalink($post->id)." title='$tooltip' >".$post->post_title."</a><br />$date</li>";
+			$display.= "<li><a href=".get_permalink($post->id)." title='$tooltip' >".$post->post_title."</a>$below<span style='white-space: nowrap;'> $date</span></li>";
 			}
 		$display.= '</ul>';
 
@@ -189,7 +197,7 @@ function requete_dernier_article($nb_display,$instance) {
 
 /**
 * Register style sheet.
-* décommenter les lignes 161 à 168 pour utiliser le style.css personnalisé inclus dans ce plugin, sinon ajouter une classe CSS dans votre thème enfant appelée .recently_updated_posts{ }
+* décommenter les lignes 197 à 208 pour utiliser le style.css personnalisé inclus dans ce plugin, sinon ajouter une classe CSS dans votre thème enfant appelée .recently_updated_posts{ }
 */
 /*
 add_action('wp_enqueue_scripts','recently_updated_posts_styles' );

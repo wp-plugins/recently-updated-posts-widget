@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: last-updated-posts-widget\n"
-"POT-Creation-Date: 2014-11-15 23:46+0100\n"
-"PO-Revision-Date: 2014-11-15 23:46+0100\n"
+"POT-Creation-Date: 2015-03-14 23:29+0100\n"
+"PO-Revision-Date: 2015-03-14 23:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: luciole135 <luciole135@free.fr>\n"
 "Language: french\n"
@@ -17,24 +17,44 @@ msgstr ""
 "X-Poedit-SearchPath-0: C:\\xampp\\htdocs\\wordpress\\wp-content\\plugins"
 "\\recently-updated-posts-widget\n"
 
-#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:50
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:51
 msgid "The latests posts and pages updated (which are not the most recent)."
 msgstr ""
 "Les derniers articles et pages mis à jour (qui ne sont pas les plus récents)."
 
-#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:53
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:54
 msgid "Recently updated posts"
 msgstr "Articles récemment mis à jour"
 
-#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:99
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:102
 msgid "Title:"
 msgstr "Titre :"
 
-#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:106
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:109
 msgid "Number:"
 msgstr "Nombre :"
 
-#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:149
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:114
+msgid "Display post date: "
+msgstr "Afficher la date&nbsp;"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:121
+msgid "on the ToolTip"
+msgstr "dans une infobulle"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:128
+msgid "below the title"
+msgstr "en dessous du titre"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:135
+msgid "after the title"
+msgstr "après le titre"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:142
+msgid "do not display"
+msgstr "ne pas afficher"
+
+#: C:\xampp\htdocs\wordpress\wp-content\plugins\recently-updated-posts-widget/recently-updated-posts.php:191
 msgid " at&nbsp;"
 msgstr " à&nbsp;"
 

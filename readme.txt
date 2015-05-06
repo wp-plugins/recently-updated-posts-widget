@@ -2,8 +2,8 @@
 Contributors: luciole135
 Tags: widget, post, page, custom post type, update, updated, modified, 
 Requires at least: 2.8
-Tested up to: 4.1
-Stable tag: 1.1
+Tested up to: 4.2
+Stable tag: 1.2
 Donate link: additifstabac@free.fr
 License: GPLv2
 
@@ -19,7 +19,7 @@ A WordPress widget that displays the last updated posts and pages
 * Il est compatible avec WordPress multisite.
 * Il est écrit en anglais, et traduit en français.
 * Il est prêt à être traduit dans d’autres langues (translation ready).
-* La date peut s'afficher ou non selon votre gré dans une infobulle, en dessous du titre ou ne pas être affichée.
+* La date peut s'afficher ou non selon votre gré dans une infobulle, à la suite ou en dessous du titre ou alors ne pas être affichée du tout.
 
 = English =
 * This widget comes in the form of a plugin that displays the widget 'Recently updated posts' in the page Appearance->Widgets when activated.
@@ -30,7 +30,7 @@ A WordPress widget that displays the last updated posts and pages
 * It is compatible with WordPress multisite.
 * It is written in english and translated into french.
 * It is ready to be translated into other languages (translation ready).
-* The date can be displayed or not according to your will in a ToolTip, below the title or may not be displayed.
+* The date can be displayed or not according to your will in a ToolTip, after or below the title or may not be displayed.
 
 == Installation ==
 
@@ -52,6 +52,9 @@ A WordPress widget that displays the last updated posts and pages
 
 = 1.1 =
 * The date can be displayed or not according to your will in a ToolTip, below the title or may not be displayed.
+
+= 1.2 =
+* The date can now be displayed too after the title.
 
 == Frequently Asked Questions ==
 = French : Comment styliser le widget ? =

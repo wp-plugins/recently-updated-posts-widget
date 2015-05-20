@@ -3,7 +3,7 @@ Contributors: luciole135
 Tags: widget, post, page, custom post type, update, updated, modified, 
 Requires at least: 2.8
 Tested up to: 4.2
-Stable tag: 1.2
+Stable tag: 1.2.1
 Donate link: additifstabac@free.fr
 License: GPLv2
 
@@ -38,23 +38,30 @@ A WordPress widget that displays the last updated posts and pages
 1. Activez le 'Plugin' depuis le tableau de bord de WordPress
 
 == Changelog ==
+= 1.2.1 =
+Fixed an error on Internet Explorer 11 posted by mepmepmep, the radio button is now initialized to the last registered option.
 
-= 1.0.1 =
-* correction of errors in English translation (Thanks to fge, moderator of the french WordPress support forum)
-* faster mysql request
+= 1.2 =
+* The date can now be displayed too after the title.
 
-= 1.0.2 =
-* New ToolTip that works on all local servers
+= 1.1 =
+* The date can be displayed or not according to your will in a ToolTip, below the title or may not be displayed.
 
 = 1.0.3 =
 * input data validation
 * Performance improvement by not loading the file style.css
 
-= 1.1 =
-* The date can be displayed or not according to your will in a ToolTip, below the title or may not be displayed.
+= 1.0.2 =
+* New ToolTip that works on all local servers
 
-= 1.2 =
-* The date can now be displayed too after the title.
+= 1.0.1 =
+* correction of errors in English translation (Thanks to fge, moderator of the french WordPress support forum)
+* faster mysql request
+
+
+
+
+
 
 == Frequently Asked Questions ==
 = French : Comment styliser le widget ? =

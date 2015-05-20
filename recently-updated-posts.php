@@ -3,7 +3,7 @@
 * Plugin Name: Recently updated posts widget
 * Description: The latests posts and pages updated (which are not the most recent).
 * Author: Luciole135
-* Version: 1.2
+* Version: 1.2.1
 * Author URI: http://additifstabac.free.fr/
 * Plugin URI: http://additifstabac.free.fr/index.php/recently-updated-posts-widget/
 * Text Domain: recently-updated-posts-domain 
@@ -103,7 +103,6 @@ class recently_updated_posts_Widget extends WP_Widget {
                 <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
             </label>
         </p>
- 
         <p>
             <label for="<?php echo $this->get_field_id('nb_display'); ?>">
                 <?php _e('Number:','recently-updated-posts-domain'); ?>
@@ -116,7 +115,6 @@ class recently_updated_posts_Widget extends WP_Widget {
 						id="<?php echo $this->get_field_id('show_date'); ?>_1"
 						name="<?php echo $this->get_field_name('show_date'); ?>" 
 						value='tooltip' 
-						checked='checked'
 						<?php checked( $show_date == 'tooltip', true) ?> />
 				<label for="<?php echo $this->get_field_id('show_date'); ?>_1"><?php _e('on the ToolTip','recently-updated-posts-domain'); ?> 
 				</label> 

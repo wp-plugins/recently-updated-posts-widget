@@ -3,7 +3,7 @@
 * Plugin Name: Recently updated posts widget
 * Description: The latests posts and pages updated (which are not the most recent).
 * Author: Luciole135
-* Version: 1.2.1
+* Version: 1.3
 * Author URI: http://additifstabac.free.fr/
 * Plugin URI: http://additifstabac.free.fr/index.php/recently-updated-posts-widget/
 * Text Domain: recently-updated-posts-domain 
@@ -167,10 +167,10 @@ function requete_dernier_article($nb_display,$instance) {
 		/* Nous allons ici récupérer les dernière articles mis à jour qui ne sont pas les derniers écrits */
         $last_update = $wpdb->get_results("SELECT post_modified, post_title, id
 										FROM $wpdb->posts
-										WHERE post_type <> 'revision' AND post_type <> 'attachment' AND post_type <> 'nav_menu_item' AND post_status = 'publish' 
+										WHERE post_type <> 'revision' AND post_type <> 'attachment' AND post_type <> 'nav_menu_item' AND post_type<>'tablepress_table' AND post_status = 'publish' 
 										AND id NOT IN (SELECT * FROM (SELECT id 
 																	  FROM $wpdb->posts
-																	  WHERE post_type <> 'revision' AND post_type <> 'attachment' AND post_type <> 'nav_menu_item' AND post_status = 'publish'
+																	  WHERE post_type <> 'revision' AND post_type <> 'attachment' AND post_type <> 'nav_menu_item' AND post_type<>'tablepress_table' AND post_status = 'publish'
 																	  ORDER BY post_date DESC
 																	  LIMIT $nb_display)
 														AS temp)

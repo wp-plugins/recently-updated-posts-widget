@@ -3,7 +3,7 @@
 * Plugin Name: Recently updated posts widget
 * Description: The latests posts and pages updated (which are not the most recent).
 * Author: Luciole135
-* Version: 1.4
+* Version: 1.4.1
 * Author URI: http://additifstabac.free.fr/
 * Plugin URI: http://additifstabac.free.fr/index.php/recently-updated-posts-widget/
 * Text Domain: recently-updated-posts-domain 
@@ -45,16 +45,17 @@ if (is_admin()) {
 }
 
 class recently_updated_posts_Widget extends WP_Widget {
-	function recently_updated_posts_Widget() {
-		/* Widget settings. */
-		$widget_ops = array("classname" => 'recently_updated_posts',
+    function __construct() {
+ 
+                $widget_args = array("classname" => 'recently_updated_posts',
 							"description" => __('The latests posts and pages updated (which are not the most recent).','recently-updated-posts-domain'),);
 		
-		/* Create the widget. */
-		$this->WP_Widget('recently_updated_posts', __('Recently updated posts','recently-updated-posts-domain'), $widget_ops);
-	}
-	
-	function widget( $args, $instance ) {
+                parent::__construct('recently_updated_posts', 
+									__('Recently updated posts',
+									'recently-updated-posts-domain'), $widget_args);
+        }
+		
+    function widget( $args, $instance ) {
 		global $wpdb;
 		extract( $args );
 
@@ -142,7 +143,7 @@ class recently_updated_posts_Widget extends WP_Widget {
 				</label>
         </p>
     <?php
-    }	
+    }
 }
 
 function recently_updated_posts_transient($nb_display,$instance){   
@@ -206,3 +207,4 @@ function recently_updated_posts_styles() {
 	wp_enqueue_style('recently_updated_posts');
 }
 */
+

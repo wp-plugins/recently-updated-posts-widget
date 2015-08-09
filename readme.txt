@@ -2,8 +2,8 @@
 Contributors: luciole135
 Tags: widget, post, page, custom post type, update, updated, modified, 
 Requires at least: 2.8
-Tested up to: 4.2
-Stable tag: 1.4
+Tested up to: 4.3
+Stable tag: 1.4.1
 Donate link: additifstabac@free.fr
 License: GPLv2
 
@@ -47,6 +47,9 @@ A WordPress widget that displays the last updated posts and pages
 1. Activez le 'Plugin' depuis le tableau de bord de WordPress
 
 == Changelog ==
+= 1.4.1 =
+In preparation for the upcoming PHP7 release, PHP4-style constructors have been deprecated in WordPress 4.3. Now it is using PHP5 style constructors. 
+
 = 1.4 =
 New SQL query compatible with the Premise for WordPress plugin (does not display the customs post type of this plugin). https://members.getpremise.com/login.aspx?ReturnUrl=%2fDefault.aspx
 

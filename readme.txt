@@ -2,7 +2,7 @@
 Contributors: luciole135
 Tags: widget, post, page, custom post type, update, updated, modified, 
 Requires at least: 2.8
-Tested up to: 4.3
+Tested up to: 4.2
 Stable tag: 1.4
 Donate link: additifstabac@free.fr
 License: GPLv2
